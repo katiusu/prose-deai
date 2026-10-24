@@ -23,8 +23,8 @@ EN="$HERE/check_slop_en.py"
 # 本仓库自带脚本：优先同仓 scripts/，否则退回已安装的 skill
 pick() {
   local n="$1"
-  for c in "$ROOT/scripts/$n" "$SKILLS_DIR/novel-prose-density/scripts/$n" \
-           "$HOME/.agents/skills/novel-prose-density/scripts/$n"; do
+  for c in "$ROOT/scripts/$n" "$SKILLS_DIR/prose-deai/scripts/$n" \
+           "$HOME/.agents/skills/prose-deai/scripts/$n"; do
     [ -f "$c" ] && { printf '%s' "$c"; return; }
   done
   printf '%s' "$ROOT/scripts/$n"

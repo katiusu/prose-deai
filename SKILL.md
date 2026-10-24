@@ -1,6 +1,6 @@
 ---
-name: novel-prose-density
-version: 1.1.0
+name: prose-deai
+version: 1.2.0
 description: "中文现代文写作规范与自查脚本：去 AI 味（句式模板检测、词表模具配额、作文套话、跨章文风一致性）+ 叙述骨架（浓稠长句、慢镜头分解），覆盖小说、散文、随笔、记叙文、议论文、说明文等任何现代文。写作文、写正文、续写、润色、改文风时使用。触发方式：/文风、/写正文、/写作文、/写散文、/写议论文、/润色、「文风太 AI」「句子太碎」「作文像 AI」「像 AI 写的」。"
 ---
 # 中文现代文写作规范：去 AI 味与叙述骨架
@@ -258,7 +258,7 @@ python3 /root/.agents/skills/story-prose-dense/scripts/check_prose_dense.py 正�
 
 ```bash
 # 作为 skill 放进任意支持 SKILL.md 的客户端
-git clone https://github.com/katiusu/novel-prose-density ~/.agents/skills/novel-prose-density
+git clone https://github.com/katiusu/prose-deai ~/.agents/skills/prose-deai
 # 只想要脚本
 python3 scripts/check_prose_dense.py 正文/第001章.md
 bash scripts/run.sh 正文/第001章.md

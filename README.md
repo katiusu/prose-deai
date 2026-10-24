@@ -1,4 +1,4 @@
-# novel-prose-density
+# prose-deai
 
 中文现代文写作规范 + 可执行自查脚本。目标只有一个：让文字像人写的——长句不断气，逗号少但不粘连，细节能数清，AI 味的模具、套话、跨章漂移被限量。
 
@@ -38,7 +38,7 @@ bash gates/postwrite.sh 作文/论坚持.md --essay
 ## 用法
 
 ```bash
-git clone https://github.com/katiusu/novel-prose-density ~/.agents/skills/novel-prose-density
+git clone https://github.com/katiusu/prose-deai ~/.agents/skills/prose-deai
 
 # 只看风格层
 python3 scripts/check_prose_dense.py 正文/第001章.md
