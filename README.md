@@ -26,7 +26,7 @@ bash gates/postwrite.sh 作文/论坚持.md --essay
 | 逗号密度过高（一段五六个逗号） | 2.5–4.5 个/百字，超出先合并分句而不是抠标点 |
 | `充满X的Y` 定语链、`如同/仿佛` 明喻铺满 | 配额：`充满` ≤3/千字，明喻 ≤1/300 字 |
 | 每段都用"我能清晰地感觉到"起句 | ≤2 次/场景 |
-| 一批句子骨架重复（句法模板化） | 文件级浓度不高于人类同规模 P90；句级 ≥0.5 换骨架不换词 |
+| 一批句子骨架重复（句法模板化） | TCI10／复读句／句长 CV 三项对同句数人类分位；≥100 句才判模板化，<40 句只给句级榜；句级 ≥0.5 换骨架不换词 |
 | 跨章文风漂移（第 10 章像另一个人写的） | 七项风格指标 vs 前文基线，\|z\|>3 先判断是不是剧情需要 |
 | 作文套话成串（首先/其次/综上所述/在当今…时代） | 强套密度 ≤0.8 处/千字；删过渡词直接摆观点 |
 | 句子停在单个实字上（`…一点腥`／`…一层红`） | 换成词语，不改句式（腥→腥气、红→红晕） |
@@ -81,10 +81,14 @@ gates/check_slop_en.py       英文 AI 味闸（stop-slop 规则独立实现，M
 gates/对齐表.md              与上游规则集的覆盖对照 + 冲突裁决
 references/intimacy.md       可选扩展：亲密场景的用词与节奏（独立，不读也可用全部主规则）
 scripts/check_prose_dense.py 风格层检查：句末单字／配额／逗号密度／题材词表探测
-scripts/check_syntax_tpl.py 句式骨架检查：POS 5-gram 句级浓度 + N/DTR/COV/H/CDR（按 arXiv 2407.00211）
+scripts/check_syntax_tpl.py 句式骨架检查：POS 5-gram 的 TCI10／句长CV／复读句／CDR，按句数分档判级（按 arXiv 2407.00211）
 scripts/check_style_consistency.py 文风一致性检查：七项指标 vs 前文章节基线（稳健 z 判漂移）
 scripts/check_essay_slop.py 作文套话检查：强套/弱套分档，按密度判（议论文、说明文、散文）
-corpus/human_baseline.md    人类基线语料（CDR 参考，25 句，待扩充）
+corpus/calibration.json     人类同句数分位校准表（3 部作品 36146 句，6 个句数档）
+corpus/ref_templates.json   人类高频模板集（20396 条，CDR 的参考集）
+corpus/human_baseline.md    旧口径自基线语料（保留兼容 --baseline）
+scripts/tplcore.py          建表与检测共用的模板内核
+scripts/build_reference.py  语料库 → 校准表 / 模板集（语料本体不入库）
 scripts/check_intimacy.py    用词层检查：代称、语境指代（可选）
 scripts/run.sh               一把跑完
 ```
