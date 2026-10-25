@@ -192,8 +192,13 @@ def main():
             'human_holdout_cdr': {k2: round(v, 4) for k2, v in cdr_hold.items()},
             'human_band': {'p50': round(T.pct(cdr_vals, .5), 4),
                            'max': round(max(cdr_vals), 4)},
-            'size_matched': '判 CDR 请用 bins[].cdr（同句数留一法分位），book 级数字只说明作品间差异',
-            'paper': '论文实测 AI 76% / 人类 35%（英文成分树模板），本表为可比的本地口径',
+            'size_matched': '判 CDR 用 bins[].cdrg 的同句数分位；book 级数字只说明作品间差异',
+            'detector_metric': 'check_syntax_tpl.py 用全局 ref_top 算 CDR，与 bins[].cdrg 同口径；'
+                               'bins[].cdr 是留一法窗口口径，两者不可混比',
+            'short_text_limit': '实测人类 100 句片段 CDR=0.755 已达同类 P90=0.753，AI 混合模板稿仅 0.409；'
+                                '<300 句 CDR 无区分度，只作诊断',
+            'paper': '论文 76%/35% 是书级成分树模板口径；本实现为 POS 5-gram 浅层代理，'
+                     '区分力主要来自复读集中度（TCI10），不是 CDR',
             'limit': '人类样本 3 部作品；band 是观测区间，不是统计下界',
         },
         'meta': {'top_pct': T.TOP_PCT, 'strong': T.STRONG, 'seed': a.seed},
